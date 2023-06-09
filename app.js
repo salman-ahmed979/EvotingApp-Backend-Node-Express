@@ -35,7 +35,7 @@ const verifyUserCredentials = async (req, res, next) => {
     return res.status(400).json({ message: "CNIC not found", status: false });
   }
 
-  const usersArray = await getData("./Users.json");
+  const usersArray = await getData("Users.json");
   console.log(usersArray.length);
   _verify =
     usersArray.length > 0
@@ -59,13 +59,13 @@ app.post(
   async (req, res) => {
     const { cnic, password } = req.body;
 
-    const usersArray = await getData("./Users.json");
+    const usersArray = await getData("Users.json");
     const newUser = { cnic: cnic, password: password };
     usersArray.push(newUser);
     console.log(usersArray);
 
     const updatedUsersData = JSON.stringify(usersArray);
-    await fs.writeFile("./Users.json", updatedUsersData);
+    await fs.writeFile("Users.json", updatedUsersData);
 
     return res
       .status(200)
@@ -93,7 +93,7 @@ app.post("/user/login", async (req, res) => {
     let isAdmin = false;
     if (cnic === "42101-1234567-8") isAdmin = true;
     else {
-      const entries = await getData("./UsersToken.json");
+      const entries = await getData("UsersToken.json");
       const newEntry = { cnic: cnic, expoToken: expoToken };
       console.log(expoToken);
       if (entries?.length === 0) {
@@ -109,7 +109,7 @@ app.post("/user/login", async (req, res) => {
           entries.push(newEntry);
         }
       }
-      await fs.writeFile("./UsersToken.json", JSON.stringify(entries));
+      await fs.writeFile("UsersToken.json", JSON.stringify(entries));
     }
 
     return res.status(202).json({
@@ -122,7 +122,7 @@ app.post("/user/login", async (req, res) => {
 
 // getElections
 app.get("/elections", async (req, res) => {
-  const elections = await getData("./Elections.json");
+  const elections = await getData("Elections.json");
 
   let _election = [];
   elections.forEach((element) => {
@@ -165,12 +165,12 @@ app.post("/user/getelectionparties", async (req, res) => {
       .json({ message: "Vote already casted.", status: false });
   }
 
-  const elections = await getData("./Elections.json");
+  const elections = await getData("Elections.json");
   let filterElection = elections.filter(
     (_election) => _election.election === election
   );
 
-  const electorals = await getData("./Electorals.json");
+  const electorals = await getData("Electorals.json");
 
   let electionPartyList = [];
 
@@ -204,11 +204,11 @@ app.post("/user/vote", async (req, res) => {
       .status(404)
       .json({ message: "Vote already casted.", status: false });
 
-  const vote = await getData("./Voting.json");
+  const vote = await getData("Voting.json");
 
   vote.push({ cnic: userCnic, election, party });
 
-  await fs.writeFile("./Voting.json", JSON.stringify(vote));
+  await fs.writeFile("Voting.json", JSON.stringify(vote));
 
   return res
     .status(200)
@@ -217,7 +217,7 @@ app.post("/user/vote", async (req, res) => {
 
 // election parties
 app.get("/parties", async (req, res) => {
-  const parties = await getData("./Electorals.json");
+  const parties = await getData("Electorals.json");
 
   let partiesList = [];
 
@@ -232,7 +232,7 @@ app.get("/parties", async (req, res) => {
 app.get("/parties/:party", async (req, res) => {
   const { party } = req.params;
   console.log(party);
-  const parties = await getData("./Electorals.json");
+  const parties = await getData("Electorals.json");
   const partyData = parties.filter((_party) => _party.abbreviation === party);
   return res.status(200).json({ party: partyData[0] });
 });
@@ -247,7 +247,7 @@ app.post("/admin/result", async (req, res) => {
   try {
     const { election } = req.body;
 
-    const votes = await getData("./Voting.json");
+    const votes = await getData("Voting.json");
     const winner = {};
 
     votes?.forEach((vote) => {
@@ -271,7 +271,7 @@ app.post("/admin/result", async (req, res) => {
       null
     );
 
-    const elections = await getData("./Elections.json");
+    const elections = await getData("Elections.json");
     const existingEntry = elections.find((elec) => elec.election === election);
 
     if (existingEntry) {
@@ -283,7 +283,7 @@ app.post("/admin/result", async (req, res) => {
       );
     }
 
-    const tokens = await getData("./UsersToken.json");
+    const tokens = await getData("UsersToken.json");
 
     const messages = tokens.map((pushToken) => {
       if (!Expo.isExpoPushToken(pushToken.expoToken)) {
@@ -323,7 +323,7 @@ app.post("/admin/result", async (req, res) => {
 });
 
 app.get("/election/result", async (req, res) => {
-  const elections = await getData("./Elections.json");
+  const elections = await getData("Elections.json");
 
   let _election = [];
   elections.forEach((element) => {
