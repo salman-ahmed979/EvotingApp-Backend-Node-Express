@@ -1,0 +1,42 @@
+[
+  {
+    "party": "Pakistan Tahreek-e-Insaaf",
+    "abbreviation": "PTI",
+    "description": "Pakistan Tehreek-e-Insaf is a political party on paper, but it is way bigger than that. It's a dream for a prosperous Pakistan where every man and woman has high self esteem and takes care of fellow citizens per the priniciples of humanity. The goal of its founder Imran Khan is to ensure Justice for all as he believes that a just society has the best chance to succeed. At the core, PTI just wants to make sure that we as a nation are the best version of ourselves and make a name for us in this world. We believe that Pakistan is a very special country, full of natural resources and full of earnest & intelligent people.",
+    "areas": [
+      "Gulshan Iqbal block 6",
+      "Korangi Sector 3",
+      "DHA Phase 5",
+      "Fb Area block 1"
+    ]
+  },
+  {
+    "party": "Pakistan Peoples Party",
+    "abbreviation": "PPP",
+    "description": "The Pakistan People's Party is a centre-left, social-democratic political party in Pakistan. It is currently the third-largest party in the National Assembly and the second-largest in the Senate of Pakistan.",
+    "areas": [
+      "Gulshan Iqbal block 6",
+      "Korangi Sector 3",
+      "DHA Phase 5",
+      "Fb Area block 1"
+    ]
+  },
+  {
+    "party": "Pakistan Muslim League",
+    "abbreviation": "PML",
+    "description": "PML-N represents the current of Muslims journey through history in South Asia that is spread over several centuries. The sufferings that the Muslim nation endured under the colonial rule in South Asia that led the Muslim leaders at the beginning of twentieth century to organize themselves into a political association that would safeguard their interests in India.",
+    "areas": ["Gulshan Iqbal block 6", "Korangi Sector 3", "DHA Phase 5"]
+  },
+  {
+    "party": "Mutahida Qaumi Movement",
+    "abbreviation": "MQM",
+    "description": "Muttahida Qaumi Movement is a Social liberal Muhajir nationalist Secular political party. The leader of the party is Khalid Maqbool Siddiqui The party's symbol is the kite. It is mostly active in Karachi where up to majority of Muhajirs currently reside.",
+    "areas": ["Korangi Sector 3", "DHA Phase 5", "Fb Area block 1"]
+  },
+  {
+    "party": "Jamaat-e-Islami",
+    "abbreviation": "IJI",
+    "description": "Jamaat-e-Islami is a movement of religious establishment. It was founded by the Islamic thinker Syed Abul Ali Maududi on August 26, 1941 in Lahore. The caravan that started with 73 people and little capital is in the millions today. Its effects are felt not only in Pakistan but all over the world. Islamic movements in different countries of the world have benefited from Syed Maududi's thought.",
+    "areas": ["Gulshan Iqbal block 6", "Fb Area block 1"]
+  }
+]
